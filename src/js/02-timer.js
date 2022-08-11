@@ -43,8 +43,8 @@ function setDisplayValues(days = '0', hours = '0', minutes = '0', seconds = '0')
 
 function updateTimerDisplay() {
   const selectedDate = fp.selectedDates[0];
-  const dateNow = new Date();
-  let dateDiff = selectedDate.getTime() - dateNow.getTime();
+  // const dateNow = new Date();
+  let dateDiff = selectedDate.getTime() - Date.now();//dateNow.getTime();
   if (dateDiff <= 0) {
     resetTimer();
     Notiflix.Notify.success('Time is up!');
@@ -85,7 +85,7 @@ const fp = flatpickr("input#datetime-picker", {
       resetTimer();
       setDisplayValues();
     }
-    const dateNow = new Date();
+    const dateNow = Date.now();//new Date();
     if (selectedDate < dateNow) {
       Notiflix.Notify.failure('Please choose a date in the future');
       btnStartRef.disabled = true;
@@ -95,6 +95,6 @@ const fp = flatpickr("input#datetime-picker", {
     timer2 = setTimeout(() => {
       btnStartRef.disabled = true;
       Notiflix.Notify.warning('You late. Choose time again.');
-    }, selectedDate.getTime() - dateNow.getTime());
+    }, selectedDate.getTime() - dateNow);//.getTime());
   },
 });
