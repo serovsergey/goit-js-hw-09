@@ -12,7 +12,6 @@ function createPromise(position, delay) {
     }, delay);
   })
 }
-//test git
 
 function onSubmit(evt) {
   evt.preventDefault();
